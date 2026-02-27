@@ -149,8 +149,13 @@ h1,h2,h3,h4{font-family:'Merriweather',Georgia,serif;line-height:1.25}
 .businesses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-top:48px}
 .biz-card{background:#fff;display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .25s}
 .biz-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.12);position:relative;z-index:1}
-.biz-card-header{padding:32px 28px 24px;border-bottom:1px solid var(--border)}
+.biz-card-header{padding:32px 28px 24px;border-bottom:1px solid var(--border);border-top:4px solid var(--border)}
+/* sector colour coding */
+.biz-card.timber .biz-card-header{border-top-color:#8B5E3C;background:linear-gradient(135deg,#FDF8F4 0%,#fff 60%)}
+.biz-card.agri   .biz-card-header{border-top-color:#2E8A45;background:linear-gradient(135deg,#F2FAF4 0%,#fff 60%)}
 .biz-card-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);border:1px solid var(--green);display:inline-block;padding:3px 8px;margin-bottom:14px}
+.biz-card.timber .biz-card-tag{color:#7A4F2A;border-color:#7A4F2A}
+.biz-card.agri   .biz-card-tag{color:#1B7A3A;border-color:#1B7A3A}
 .biz-card-code{font-family:'Merriweather',serif;font-size:2rem;font-weight:900;color:var(--dark);line-height:1;margin-bottom:4px}
 .biz-card-name{font-size:.8125rem;color:var(--muted);font-weight:600}
 .biz-card-body{padding:24px 28px;flex:1;display:flex;flex-direction:column}
@@ -351,7 +356,7 @@ h1,h2,h3,h4{font-family:'Merriweather',Georgia,serif;line-height:1.25}
     <div class="businesses-grid">
 
       <!-- MBS -->
-      <div class="biz-card">
+      <div class="biz-card timber">
         <div class="biz-card-header">
           <span class="biz-card-tag">Timber Panels</span>
           <div class="biz-card-code">MBS</div>
@@ -375,7 +380,7 @@ h1,h2,h3,h4{font-family:'Merriweather',Georgia,serif;line-height:1.25}
       </div>
 
       <!-- MBJ -->
-      <div class="biz-card">
+      <div class="biz-card timber">
         <div class="biz-card-header">
           <span class="biz-card-tag">Wood-Working</span>
           <div class="biz-card-code">MBJ</div>
@@ -399,7 +404,7 @@ h1,h2,h3,h4{font-family:'Merriweather',Georgia,serif;line-height:1.25}
       </div>
 
       <!-- KSMT -->
-      <div class="biz-card">
+      <div class="biz-card agri">
         <div class="biz-card-header">
           <span class="biz-card-tag">Agri-Processing</span>
           <div class="biz-card-code">KSMT</div>
