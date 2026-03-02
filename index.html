@@ -7,6 +7,12 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231A1C14'/><text x='16' y='22' font-family='serif' font-weight='900' font-size='10' fill='%23F0C200' text-anchor='middle'>MTG</text></svg>">
 <meta name="description" content="Mustikatama Group is a diversified industrial group based in Lumajang, East Java. Operating across timber panels, wood-working and agricultural processing since 1989.">
 <meta name="robots" content="index, follow">
+<link rel="alternate" hreflang="en" href="https://mustikatama.com/">
+<link rel="alternate" hreflang="ja" href="https://mustikatama.com/">
+<link rel="alternate" hreflang="zh-Hans" href="https://mustikatama.com/">
+<link rel="alternate" hreflang="ko" href="https://mustikatama.com/">
+<link rel="alternate" hreflang="es" href="https://mustikatama.com/">
+<link rel="alternate" hreflang="x-default" href="https://mustikatama.com/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Corporation","name":"Mustikatama Group","url":"https://mustikatama.com","foundingDate":"1989","address":{"@type":"PostalAddress","streetAddress":"Jl. Raya Lumajang–Tempeh Km 7","addressLocality":"Lumajang","addressRegion":"East Java","postalCode":"67371","addressCountry":"ID"},"telephone":"+62-334-887888","email":"marketing@mustikatama.com"}
 </script>
@@ -31,7 +37,7 @@ a{text-decoration:none;color:inherit}
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 
 /* NAV */
-.navbar{position:sticky;top:0;z-index:99;background:#fff;border-bottom:1px solid var(--border)}
+.navbar{position:sticky;top:34px;z-index:99;background:#fff;border-bottom:1px solid var(--border)}
 .navbar .container{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
 .nav-logo-name{font-family:'Merriweather',serif;font-size:1.125rem;font-weight:900;color:var(--dark);letter-spacing:.5px}
 .nav-logo-sub{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-top:1px}
@@ -111,9 +117,59 @@ a{text-decoration:none;color:inherit}
 /* RESPONSIVE */
 @media(max-width:900px){.biz-grid{grid-template-columns:1fr;gap:2px}.about-strip-inner{grid-template-columns:1fr;gap:28px}}
 @media(max-width:640px){.nav-links{display:none}.hero-stats{gap:20px}.footer-inner{flex-direction:column}.footer-contact{text-align:left}.footer-links{justify-content:flex-start}}
+/* ── Top utility bar + lang picker ── */
+.topbar{position:sticky;top:0;z-index:100;background:#1A1C14;height:34px;display:flex;align-items:center}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;width:100%}
+.topbar-left{display:flex;align-items:center;gap:14px;font-size:11px;color:rgba(255,255,255,.45)}
+.topbar-left a{color:rgba(255,255,255,.45);transition:color .2s}
+.topbar-left a:hover{color:#F0C200}
+.topbar-sep{color:rgba(255,255,255,.2)}
+.lang-picker{position:relative;display:flex;align-items:center}
+.lang-globe{display:flex;align-items:center;gap:5px;padding:4px 10px;background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);font-size:11px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .2s;white-space:nowrap;border-radius:2px}
+.lang-globe:hover,.lang-picker:hover .lang-globe{color:#F0C200;border-color:rgba(240,194,0,.5)}
+.lang-globe .lg-icon{font-size:1rem}
+.lang-globe .lg-caret{font-size:.6rem;opacity:.6;transition:transform .2s}
+.lang-picker:hover .lg-caret{transform:rotate(180deg)}
+.lang-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#1e2118;border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 24px rgba(0,0,0,.4);min-width:148px;z-index:500;border-radius:3px;overflow:hidden}
+.lang-picker:hover .lang-menu{display:block}
+.lang-item{display:flex;align-items:center;gap:9px;padding:9px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.55);background:none;border:none;width:100%;text-align:left;cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
+.lang-item:hover{background:rgba(255,255,255,.07);color:#fff}
+.lang-item.active{color:#F0C200}
+.lang-item .li-flag{font-size:.95rem;width:20px}
+body{top:0!important}
+.goog-te-banner-frame.skiptranslate{display:none!important;height:0!important}
+.goog-te-gadget{display:none!important}
+#google_translate_element{display:none!important}
+@media(max-width:768px){.topbar-left{display:none}}
+@media(max-width:480px){.lang-globe .lg-label{display:none}}
 </style>
 </head>
 <body>
+
+<!-- TOP UTILITY BAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>📞 <a href="tel:+62334887888">+62 334 887888</a></span>
+      <span class="topbar-sep">|</span>
+      <span>✉ <a href="mailto:marketing@mustikatama.com">marketing@mustikatama.com</a></span>
+    </div>
+    <div class="lang-picker" id="langPicker">
+      <button class="lang-globe" onclick="toggleLangMenu()" aria-label="Select language">
+        <span class="lg-icon">🌐</span>
+        <span class="lg-label" id="lgLabel">EN</span>
+        <span class="lg-caret">▾</span>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-item active" onclick="setLang('en','EN')"><span class="li-flag">🇬🇧</span> English</button>
+        <button class="lang-item" onclick="setLang('ja','日本語')"><span class="li-flag">🇯🇵</span> 日本語</button>
+        <button class="lang-item" onclick="setLang('zh-CN','中文')"><span class="li-flag">🇨🇳</span> 中文</button>
+        <button class="lang-item" onclick="setLang('ko','한국어')"><span class="li-flag">🇰🇷</span> 한국어</button>
+        <button class="lang-item" onclick="setLang('es','Español')"><span class="li-flag">🇪🇸</span> Español</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -272,6 +328,41 @@ a{text-decoration:none;color:inherit}
   </div>
 </footer>
 
+<div id="google_translate_element"></div>
+<script>
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ja,zh-CN,ko,es',autoDisplay:false},'google_translate_element');
+  var saved=localStorage.getItem('mtg_lang');
+  if(saved&&saved!=='en') setTimeout(function(){setLang(saved,localStorage.getItem('mtg_lang_label')||saved)},800);
+}
+function toggleLangMenu(){
+  var m=document.getElementById('langMenu');
+  m.style.display=m.style.display==='block'?'none':'block';
+}
+document.addEventListener('click',function(e){
+  var p=document.getElementById('langPicker');
+  if(p&&!p.contains(e.target)){document.getElementById('langMenu').style.display='';}
+});
+function setLang(code,label){
+  var lbl=document.getElementById('lgLabel');
+  if(lbl) lbl.textContent=label;
+  document.querySelectorAll('.lang-item').forEach(function(el){
+    el.classList.toggle('active',el.getAttribute('onclick').indexOf("'"+code+"'")>-1);
+  });
+  document.getElementById('langMenu').style.display='';
+  localStorage.setItem('mtg_lang',code);
+  localStorage.setItem('mtg_lang_label',label);
+  if(code==='en'){
+    var c=document.cookie.match(/googtrans=([^;]+)/);
+    if(c){document.cookie='googtrans=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';document.cookie='googtrans=; path=/; domain=.'+location.hostname+'; expires=Thu, 01 Jan 1970 00:00:00 GMT';location.reload();}
+    return;
+  }
+  var sel=document.querySelector('.goog-te-combo');
+  if(sel){sel.value=code;sel.dispatchEvent(new Event('change'));}
+  else{document.cookie='googtrans=/en/'+code+'; path=/';document.cookie='googtrans=/en/'+code+'; path=/; domain=.'+location.hostname;location.reload();}
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
